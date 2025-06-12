@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import { JSX } from 'react';
 
 type Producto = {
   id: number;
