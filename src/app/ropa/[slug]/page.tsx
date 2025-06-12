@@ -25,13 +25,13 @@ async function getProductosPorCategoria(slug: string): Promise<Producto[]> {
     const nombreSlug = nombreCategoria.toLowerCase().replace(/\s+/g, '-');
     return nombreSlug === slug.toLowerCase();
   });
-};
-
-interface PageProps {
-  params: { slug: string };
 }
 
-export default async function CategoriaPage({ params }: PageProps) {
+export default async function CategoriaPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const productos = await getProductosPorCategoria(params.slug);
 
   if (!productos.length) return notFound();
