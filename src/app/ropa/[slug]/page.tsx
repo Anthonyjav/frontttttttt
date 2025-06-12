@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { JSX } from 'react';
 
 type Producto = {
   id: number;
@@ -26,14 +25,13 @@ async function getProductosPorCategoria(slug: string): Promise<Producto[]> {
     const nombreSlug = nombreCategoria.toLowerCase().replace(/\s+/g, '-');
     return nombreSlug === slug.toLowerCase();
   });
+};
+
+interface PageProps {
+  params: { slug: string };
 }
 
-// 👇 Aquí agregamos el tipo de retorno explícito
-export default async function CategoriaPage({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<JSX.Element> {
+export default async function CategoriaPage({ params }: PageProps) {
   const productos = await getProductosPorCategoria(params.slug);
 
   if (!productos.length) return notFound();
