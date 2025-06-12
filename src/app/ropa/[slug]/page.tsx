@@ -27,14 +27,12 @@ async function getProductosPorCategoria(slug: string): Promise<Producto[]> {
   });
 }
 
-// Tipado correcto de props para rutas dinámicas en App Router
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export default async function CategoriaPage({ params }: Props) {
+// 👇 Aquí agregamos el tipo de retorno explícito
+export default async function CategoriaPage({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<JSX.Element> {
   const productos = await getProductosPorCategoria(params.slug);
 
   if (!productos.length) return notFound();
