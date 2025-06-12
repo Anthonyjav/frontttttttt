@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link'
 
 type Usuario = {
   id: number;
@@ -100,12 +101,12 @@ export default function PerfilUsuario() {
           ) : carrito.length === 0 ? (
             <>
               <p className="text-gray-600">Tu carrito está vacío.</p>
-              <a
+              <Link
                 href="/"
                 className="inline-block mt-2 px-4 py-2 border border-black rounded hover:bg-black hover:text-white transition text-sm"
               >
                 Seguir comprando
-              </a>
+              </Link>
             </>
           ) : (
             <div className="grid gap-6 md:grid-cols-2">
